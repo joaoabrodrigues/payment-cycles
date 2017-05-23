@@ -2,7 +2,7 @@
 Simple app to manage monthly payments.
 
 Build with
-• MongoDB
-• Express.Js
-• Node.js
-• Angular 1
+• MongoDB <br />
+• Express.Js <br />
+• Node.js <br />
+• Angular 1 <br />
