@@ -8,4 +8,7 @@ module.exports = function(server){
   //API Routes
   const paymentCycleService = require('../api/paymentCycle/paymentCycleService')
   paymentCycleService.register(router, '/paymentCycles')
+
+  const paymentSummaryService = require('../api/paymentSummary/paymentSummaryService')
+  router.route('/paymentSummary').get(paymentSummaryService.getSummary)
 }
