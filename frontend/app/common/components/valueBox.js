@@ -16,7 +16,7 @@ angular.module('paymentCycle').component('valueBox', {
   <div class="{{ $ctrl.gridClasses }}">
     <div class="small-box {{ $ctrl.colorClass }}">
       <div class="inner">
-        <h1>{{ $ctrl.value }}</h1>
+        <h3>{{ $ctrl.value }}</h3>
         <p>{{ $ctrl.text }}</p>
       </div>
       <div class="icon">
