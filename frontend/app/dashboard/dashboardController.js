@@ -1,20 +1,21 @@
-angular.module('paymentCycle').controller('DashboardController', [
-  '$scope',
-  '$http',
-  DashboardController
-])
+(function() {
+  angular.module('paymentCycle').controller('DashboardController', [
+    '$http',
+    DashboardController
+  ])
 
-function DashboardController($scope, $http) {
+  function DashboardController($http) {
+    const vm = this
+    vm.getSummary = function() {
+      const url = 'http://localhost:3003/v1/api/paymentSummary'
+      $http.get(url).then(function(response){
+        const {credit = 0, debt = 0} = response.data
+        vm.credit = credit
+        vm.debt = debt
+        vm.total = credit - debt
+      })
+    }
 
-  $scope.getSummary = function() {
-    const url = 'http://localhost:3003/v1/api/paymentSummary'
-    $http.get(url).then(function(response){
-      const {credit = 0, debt = 0} = response.data
-      $scope.credit = credit
-      $scope.debt = debt
-      $scope.total = credit - debt
-    })
+    vm.getSummary()
   }
-
-  $scope.getSummary()
-}
+})()
