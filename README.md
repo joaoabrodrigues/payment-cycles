@@ -1,8 +1,7 @@
 # Payment Cycles
 Simple app to manage monthly payments.
 
-Built with: <br />
+Back-end built with: <br />
 • MongoDB <br />
 • Express.Js <br />
-• Angular 1 <br />
 • Node.js <br />
