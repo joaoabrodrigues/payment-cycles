@@ -51,21 +51,21 @@ const signup = (req, res, next) => {
     if (!password.match(passwordRegex)) {
         return res.status(400).send({
             errors: [
-                "The password must include uppercase and lowercase letters numbers and symbols (@#$%) and the size must be between 6-20."
+                "The password must include uppercase and lowercase letters numbers and symbols (@#$%) and the size must be between 6-20"
             ]
         })
     }
-    
+
     const salt = bcrypt.genSaltSync()
     const passwordHash = bcrypt.hashSync(password, salt)
     if (!bcrypt.compareSync(confirmPassword, passwordHash)) {
-        return res.status(400).send({ errors: ['Senhas não conferem.'] })
+        return res.status(400).send({ errors: ['Passwords do not match'] })
     }
     User.findOne({ email }, (err, user) => {
         if (err) {
             return sendErrorsFromDB(res, err)
         } else if (user) {
-            return res.status(400).send({ errors: ['Usuário já cadastrado.'] })
+            return res.status(400).send({ errors: ['User already registered'] })
         } else {
             const newUser = new User({ name, email, password: passwordHash })
             newUser.save(err => {
