@@ -5,6 +5,9 @@ const paymentCycle = require('../paymentCycle/paymentCycle')
 function getSummary(req, res) {
   paymentCycle.aggregate(
     {
+      $match: { userEmail: req.headers['useremail'] }
+    },
+    {
       $project: { credit: { $sum: "$credits.value" }, debt: { $sum: "$debts.value" }}
     },
     {
